@@ -1,3 +1,19 @@
-body {
-  background-color: red;
+h1 {
+  text-align: center;
+}
+
+.board {
+  width: 972px;
+  height: 600px;
+  border: 1px solid black;
+  position: relative;
+  margin-left: 215px;
+  padding: initial;
+}
+li {
+  height: 98px;
+  width: 160px;
+  border: 1px solid black;
+  display: inline-block;
+  float: left;
 }
