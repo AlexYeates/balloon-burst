@@ -17,4 +17,9 @@ $(() => {
     $fastBallons.attr('id', 'fast-area');
   }
   generateBalloons();
+
+  //A mouseover event will take the balloon's ID away, therefore making it pop
+  $('.slow-area').mouseover(function() {
+    $slowBallons.removeAttr('id');
+  });
 });
