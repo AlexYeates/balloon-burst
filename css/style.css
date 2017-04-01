@@ -9,6 +9,7 @@ h1 {
   position: relative;
   margin-left: 215px;
   padding: initial;
+  background-color: beige;
 }
 li {
   height: 98px;
@@ -16,4 +17,22 @@ li {
   border: 1px solid black;
   display: inline-block;
   float: left;
+}
+
+#slow {
+  background-color: red;
+  height: 98px;
+  width: 160px;
+}
+
+#medium {
+  background-color: yellow;
+  height: 98px;
+  width: 160px;
+}
+
+#fast {
+  background-color: green;
+  height: 98px;
+  width: 160px;
 }

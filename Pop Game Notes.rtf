@@ -19,18 +19,23 @@ Premise\
 - each head will have a different speed and generate randomly across a particular section of the game board \
 - for example, farage will travel faster than Boris Johnson \
 - there will be levels which increase the number of heads to pop, max level of 10.\
+- you win after 30 seconds \
 \
 
 \b \ul Logic for MVP\
 
 \b0 \ulnone - create a game board of 36 lis \
 - give the first six lis a class of finish for the balloons\
-- give the last six rows a class of start for the balloons\
+- give the last three rows a class of start for the balloons\
 - give the ul a class of game board\
 - use css to create the game board \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 - make a class for three types of balloon, slow, medium and fast\
+- the classes are different colours, red, yellow and green\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+- set a variable for winCondition, \
 - use animate method to set up the behaviour of the balloons - as in, where they generate, how fast they go \
-- make a div for three types of balloon\
-- the classes are different colours \
 - the behaviour of those classes will be defined within the method animate \
 - green to go randomly and slowly \
 - yellow to go medium\
