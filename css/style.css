@@ -23,16 +23,19 @@ li {
   background-color: red;
   height: 98px;
   width: 160px;
+  position: relative;
 }
 
 #medium {
   background-color: yellow;
   height: 98px;
   width: 160px;
+  position: relative;
 }
 
 #fast {
   background-color: green;
   height: 98px;
   width: 160px;
+  position: relative;
 }
