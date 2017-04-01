@@ -10,8 +10,10 @@ $(() => {
   function generateBalloons() {
     if (missedBalloons < 3) {
       slowBallons.setAttribute('id', 'slow');
-      //animate the ballon 
+      //animate the ballon
       //callback: complete (so it happens again)
+      //add a condition saying if it reaches the finish line +1 to missedBalloons?
+      //Once the animations work and +1 to missedBalloons, add a loop to this function to check if missedBalloons is at 3, and if not to keep generating balloons while the countdown lasts
 
 
       mediumBallons.setAttribute('id', 'medium');
@@ -20,21 +22,11 @@ $(() => {
   }
   generateBalloons();
 
-  //missedBalloons will contain the number of balloons within the top row, which is checked through a for loop.
-
-
-
   //A mouseover event will take the balloon's ID away, therefore making it pop
   pop.mouseover(function() {
     $(this).removeAttr('id');
   });
 
-
-  //A for loop will check the top to see if any balloons have been missed. If there are not any it will keep running generateBalloons
-
   //A timer for 30 seconds will end the game
-
-
-
 
 });
