@@ -11,8 +11,8 @@ $(() => {
     let slowBallons = $('.slow-area')[Math.floor(Math.random()*$('.slow-area').length)];
     console.log(slowBallons);
     if (missedBalloons < 3) {
-      slowBallons.attr('id', 'slow');
-    } 
+      slowBallons.setAttribute('id', 'slow');
+    }
   }
   generateBalloons();
 
