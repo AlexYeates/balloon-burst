@@ -10,9 +10,9 @@ $(() => {
 
   //Once the animations work and +1 to missedBalloons, add a loop to this function to check if missedBalloons is at 3, and if not to keep generating balloons while the countdown lasts
   function generateBalloons() {
-    if (missedBalloons < 3) {
+    // if (missedBalloons < 3) {}
+    for (missedBalloons = 0; missedBalloons < 3; missedBalloons++) {
       slowBallons.setAttribute('id', 'slow');
-      console.log(slowBallons);
       mediumBallons.setAttribute('id', 'medium');
       fastBallons.setAttribute('id', 'fast');
     }
@@ -27,11 +27,10 @@ $(() => {
     $('.board')
     .find(slowBallons)
     .animate({
-      // left: 280,
       bottom: 300
     }, options);
     $.extend(true, {}, options, {
-      complete: missedBalloons += 1 }
+      done: missedBalloons + 1 }
     );
   }
   slowAnimation();
@@ -44,11 +43,10 @@ $(() => {
     $('.board')
     .find(mediumBallons)
     .animate({
-      // left: 280,
       bottom: 400
     }, options);
     $.extend(true, {}, options, {
-      complete: missedBalloons += 1 }
+      done: missedBalloons + 1 }
     );
   }
   mediumAnimation();
@@ -61,21 +59,15 @@ $(() => {
     $('.board')
     .find(fastBallons)
     .animate({
-      // left: 280,
       bottom: 500
     }, options);
     $.extend(true, {}, options, {
-      complete: missedBalloons += 1 }
+      done: missedBalloons + 1 }
     );
   }
   fastAnimation();
 
-
-
-
-  //add a callback condition saying if it reaches the finish line +1 to missedBalloons?
-
-
+console.log(missedBalloons);
 
   //A mouseover event will take the balloon's ID away, therefore making it pop
   pop.mouseover(function() {
