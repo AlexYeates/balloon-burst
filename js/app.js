@@ -28,8 +28,8 @@ $(() => {
     $('.board')
     .find(slowBallons)
     .animate({
-      left: 280,
-      top: 0
+      // left: 280,
+      bottom: 300
     }, options);
     $.extend(true, {}, options, {
       complete: missedBalloons += 1 }
