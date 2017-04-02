@@ -48,7 +48,7 @@ $(() => {
       bottom: 400
     }, options);
     $.extend(true, {}, options, {
-      done: missedBalloons + 1 }
+      complete: missedBalloons + 1 }
     );
   }
   mediumAnimation();
@@ -64,7 +64,7 @@ $(() => {
       bottom: 500
     }, options);
     $.extend(true, {}, options, {
-      done: missedBalloons + 1 }
+      complete: missedBalloons + 1 }
     );
   }
   fastAnimation();
