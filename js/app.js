@@ -13,28 +13,33 @@ $(() => {
     if (missedBalloons < 3) {
       slowBallons.setAttribute('id', 'slow');
       console.log(slowBallons);
-      function slowAnimation() {
-        //animate the balloons
-        $('.board')
-        .find(slowBallons)
-        .animate({
-          left: 0,
-          top: 0
-        }, 'slow');
-        mediumBallons.setAttribute('id', 'medium');
-        fastBallons.setAttribute('id', 'fast');
-      }
-      slowAnimation();
+      mediumBallons.setAttribute('id', 'medium');
+      fastBallons.setAttribute('id', 'fast');
     }
   }
   generateBalloons();
 
-
+  function slowAnimation() {
+    var options = {
+      duration: 1000,
+      easing: 'linear'
+    };
+    //animate the balloons
+    $('.board')
+    .find(slowBallons)
+    .animate({
+      left: 280,
+      top: 0
+    }, options);
+    $.extend(true, {}, options, {
+      complete: missedBalloons += 1 }
+    );
+    console.log(missedBalloons);
+  }
+  slowAnimation();
 
   // options
-  // $.extend(true, {}, options, {
-  //   complete: missedBalloons += 1 }
-  // ))
+  //
   // generateBalloons();
 
 
