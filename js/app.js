@@ -19,6 +19,8 @@ $(() => {
   }
   generateBalloons();
 
+
+//Maybe add the hour glass animation so the balloons will sway as they try to reach the top?
   function slowAnimation() {
     var options = {
       duration: 1000,
