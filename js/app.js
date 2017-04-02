@@ -7,20 +7,43 @@ $(() => {
   const pop = $('li');
 
   //An if statment will check whether missedBalloons has three ballons. If it doesn't balloons will be generated and be animated to go to the top of the board.
+
+  //Once the animations work and +1 to missedBalloons, add a loop to this function to check if missedBalloons is at 3, and if not to keep generating balloons while the countdown lasts
   function generateBalloons() {
     if (missedBalloons < 3) {
       slowBallons.setAttribute('id', 'slow');
-      //animate the ballon
-      //callback: complete (so it happens again)
-      //add a condition saying if it reaches the finish line +1 to missedBalloons?
-      //Once the animations work and +1 to missedBalloons, add a loop to this function to check if missedBalloons is at 3, and if not to keep generating balloons while the countdown lasts
-
-
-      mediumBallons.setAttribute('id', 'medium');
-      fastBallons.setAttribute('id', 'fast');
+      console.log(slowBallons);
+      function slowAnimation() {
+        //animate the balloons
+        $('.board')
+        .find(slowBallons)
+        .animate({
+          left: 0,
+          top: 0
+        }, 'slow');
+        mediumBallons.setAttribute('id', 'medium');
+        fastBallons.setAttribute('id', 'fast');
+      }
+      slowAnimation();
     }
   }
   generateBalloons();
+
+
+
+  // options
+  // $.extend(true, {}, options, {
+  //   complete: missedBalloons += 1 }
+  // ))
+  // generateBalloons();
+
+
+
+
+
+  //add a callback condition saying if it reaches the finish line +1 to missedBalloons?
+
+
 
   //A mouseover event will take the balloon's ID away, therefore making it pop
   pop.mouseover(function() {
