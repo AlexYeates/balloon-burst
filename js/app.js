@@ -12,12 +12,11 @@ $(() => {
   });
 
   //These will generate the balloons so long as missedBalloons is less than 3.
-  mediumAnimation();
-  slowAnimation();
+  animation();
 
 
   //Maybe add the hour glass animation so the balloons will sway as they try to reach the top?
-  function slowAnimation(){
+  function animation(){
     while (missedBalloons < 3) {
       slowBalloons.setAttribute('id', 'slow');
       var options = {
@@ -32,16 +31,7 @@ $(() => {
       $.extend(true, {}, options, {
         complete: missedBalloons.push(slowBalloons)
       });
-    }
-  }
-
-  function mediumAnimation() {
-    while (missedBalloons < 3) {
       mediumBalloons.setAttribute('id', 'medium');
-      var options = {
-        duration: 800,
-        easing: 'linear'
-      };
       $('.board')
       .find(mediumBalloons)
       .animate({
@@ -52,6 +42,24 @@ $(() => {
       });
     }
   }
+  //
+  // function mediumAnimation() {
+  //   while (missedBalloons < 3) {
+  //     mediumBalloons.setAttribute('id', 'medium');
+  //     var options = {
+  //       duration: 800,
+  //       easing: 'linear'
+  //     };
+  //     $('.board')
+  //     .find(mediumBalloons)
+  //     .animate({
+  //       bottom: 400
+  //     }, options);
+  //     $.extend(true, {}, options, {
+  //       complete: missedBalloons.push(mediumBalloons)
+  //     });
+  //   }
+  // }
 
 
   // function fastAnimation() {
