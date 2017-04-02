@@ -31,23 +31,25 @@ Premise\
 - use css to create the game board \
 - make a class for three types of balloon, slow, medium and fast\
 - the classes are different colours, red, yellow and green\
-\
-- set a variable for winCondition, \
+- set a variable for missed balloons\
 - use animate method to set up the behaviour of the balloons - as in, where they generate, how fast they go \
 - the behaviour of those classes will be defined within the method animate \
 - green to go randomly and slowly \
 - yellow to go medium\
 - red to go fast \
 - enable a mouseover event listener so when the mouse is over the ballon it pops it\
-- use a class switch to animate the pop feature?\
-- use a for loop to go through the completion row to see how many balloons are there\
+- use a for loop to go through the generate balloon function to checking how many missed balloons there are\
+\
+- make sure that the callback in the animation adds one to missed balloons only if completed\
+- and that the event listener prevents the animation from completing, making the loop in generate balloons fire again, restarting the cycle \
 - make an if statement to say if the number of balloons reaches three to return a you lose alert \
 - add a reset button in the alert to reload the page and reset the game \
 - start levels, which will increase the number of balloons appearing with more quicker ones\
 \
 
-\b \ul Draft animate \
+\b \ul Questions\
 
-\b0 \ulnone - need to set the complete to true to when it is finished, it restarts (citing the function generateBalloons to start again\
-- \
-}
+\b0 \ulnone - how to delay the callback so it only happens if it reaches the top\
+- make the mouseover event listener actually reset the animation \
+- get the heroku server to fire all three animations \
+- make the balloons generate so long as the number of missed balloons is less than three}

@@ -1,6 +1,6 @@
 $(() => {
 
-  let missedBalloons = 0;
+  let missedBalloons = [];
   let slowBallons = $('.slow-area')[Math.floor(Math.random()*$('.slow-area').length)];
   let mediumBallons = $('.medium-area')[Math.floor(Math.random()*$('.medium-area').length)];
   let fastBallons = $('.fast-area')[Math.floor(Math.random()*$('.fast-area').length)];
@@ -10,8 +10,8 @@ $(() => {
 
   //Once the animations work and +1 to missedBalloons, add a loop to this function to check if missedBalloons is at 3, and if not to keep generating balloons while the countdown lasts
   function generateBalloons() {
-    // if (missedBalloons < 3) {
-    for (missedBalloons = 0; missedBalloons < 3; missedBalloons++) {
+    if (missedBalloons < 3) {
+    //for (var i = 0; i < missedBalloons[3]; i++) {
       slowBallons.setAttribute('id', 'slow');
       mediumBallons.setAttribute('id', 'medium');
       fastBallons.setAttribute('id', 'fast');
@@ -20,7 +20,7 @@ $(() => {
   generateBalloons();
 
 
-//Maybe add the hour glass animation so the balloons will sway as they try to reach the top?
+  //Maybe add the hour glass animation so the balloons will sway as they try to reach the top?
   function slowAnimation() {
     var options = {
       duration: 1000,
@@ -32,8 +32,8 @@ $(() => {
       bottom: 300
     }, options);
     $.extend(true, {}, options, {
-      complete: missedBalloons + 1 }
-    );
+      complete: missedBalloons.push(slowBallons)
+    });
   }
   slowAnimation();
 
@@ -48,8 +48,8 @@ $(() => {
       bottom: 400
     }, options);
     $.extend(true, {}, options, {
-      complete: missedBalloons + 1 }
-    );
+      complete: missedBalloons.push(mediumBallons)
+    });
   }
   mediumAnimation();
 
@@ -64,8 +64,8 @@ $(() => {
       bottom: 500
     }, options);
     $.extend(true, {}, options, {
-      complete: missedBalloons + 1 }
-    );
+      complete: missedBalloons.push(fastBallons)
+    });
   }
   fastAnimation();
 
