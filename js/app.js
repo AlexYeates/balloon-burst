@@ -6,28 +6,32 @@ $(() => {
   let fastBallons = $('.fast-area')[Math.floor(Math.random()*$('.fast-area').length)];
   const pop = $('li');
 
-  generateBalloons();
+  // generateBalloons();
   slowAnimation();
 
+  //A mouseover event will take the balloon's ID away, therefore making it pop
+  pop.mouseover(function() {
+    $(this).removeAttr('id');
+  });
 
   //An if statment will check whether missedBalloons has three ballons. If it doesn't balloons will be generated and be animated to go to the top of the board.
 
   //Once the animations work and +1 to missedBalloons, add a loop to this function to check if missedBalloons is at 3, and if not to keep generating balloons while the countdown lasts
-  function generateBalloons() {
-    if (missedBalloons < 3) {
-      //while (missedBalloons < 3) {
-      //for (var i = 0; i < missedBalloons[3]; i++) {
-      slowBallons.setAttribute('id', 'slow');
-      mediumBallons.setAttribute('id', 'medium');
-      fastBallons.setAttribute('id', 'fast');
-    }
-  }
+  // function generateBalloons() {
+  //   // if (missedBalloons < 3) {
+  //     //while (missedBalloons < 3) {
+  //     //for (var i = 0; i < missedBalloons[3]; i++) {
+  //     slowBallons.setAttribute('id', 'slow');
+  //     mediumBallons.setAttribute('id', 'medium');
+  //     fastBallons.setAttribute('id', 'fast');
+  //   }
+
   // generateBalloons();
 
   //Maybe add the hour glass animation so the balloons will sway as they try to reach the top?
   function slowAnimation(){
     while (missedBalloons < 3) {
-      // function slowAnimation() {
+      slowBallons.setAttribute('id', 'slow');
       var options = {
         duration: 1000,
         easing: 'linear'
@@ -40,7 +44,6 @@ $(() => {
       $.extend(true, {}, options, {
         complete: missedBalloons.push(slowBallons)
       });
-      // slowAnimation();
     }
   }
 
@@ -79,10 +82,7 @@ $(() => {
 
   console.log(missedBalloons);
 
-  //A mouseover event will take the balloon's ID away, therefore making it pop
-  pop.mouseover(function() {
-    $(this).removeAttr('id');
-  });
+
 
   //A timer for 30 seconds will end the game
 
