@@ -24,7 +24,6 @@ $(() => {
       duration: 1000,
       easing: 'linear'
     };
-    //animate the balloons
     $('.board')
     .find(slowBallons)
     .animate({
@@ -34,14 +33,42 @@ $(() => {
     $.extend(true, {}, options, {
       complete: missedBalloons += 1 }
     );
-    console.log(missedBalloons);
   }
   slowAnimation();
 
-  // options
-  //
-  // generateBalloons();
+  function mediumAnimation() {
+    var options = {
+      duration: 800,
+      easing: 'linear'
+    };
+    $('.board')
+    .find(mediumBallons)
+    .animate({
+      // left: 280,
+      bottom: 400
+    }, options);
+    $.extend(true, {}, options, {
+      complete: missedBalloons += 1 }
+    );
+  }
+  mediumAnimation();
 
+  function fastAnimation() {
+    var options = {
+      duration: 600,
+      easing: 'linear'
+    };
+    $('.board')
+    .find(fastBallons)
+    .animate({
+      // left: 280,
+      bottom: 500
+    }, options);
+    $.extend(true, {}, options, {
+      complete: missedBalloons += 1 }
+    );
+  }
+  fastAnimation();
 
 
 
