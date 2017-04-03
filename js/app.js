@@ -53,9 +53,13 @@ $(() => {
     $('#high-score').text(`High Score: ${Game.score++ -1}`);
   };
 
+// The click function wont trigger 
   Game.resetButton = function resetButton() {
-    Game.resetButton = $('<p class="button">Play again<p>');
+    Game.resetButton = $('<p class="button">Play again</p>');
     Game.board.append(Game.resetButton);
+    Game.resetButton.on('click', '.button', function() {
+      Game.startGame();
+    });
   };
 
   Game.startGame();
