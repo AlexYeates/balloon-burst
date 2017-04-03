@@ -29,17 +29,15 @@ $(() => {
       complete: function() {
         if (!($(this).hasClass('clicked'))) {
           Game.gameOver = true;
-          Game.gameOverMessage = $('<p>GAME OVER!</p>');
-          Game.gameOverMessage.css({
-            'text-align': 'left',
-            'font-size': '80px',
-            'margin': '40px'
-          });
-          $('').append(Game.gameOverMessage);
-          $('#high-score').text(`High Score: ${Game.score++ -1}`);
+          Game.gameOverMessage();
+          Game.resetButton();
         }
       }
     });
+  };
+
+  Game.randomStartingPosition = function randomStartingPosition() {
+    return Math.floor(Math.random() * 1000);
   };
 
   Game.gameOverCheck = function() {
@@ -49,8 +47,15 @@ $(() => {
     }
   };
 
-  Game.randomStartingPosition = function randomStartingPosition() {
-    return Math.floor(Math.random() * 1000);
+  Game.gameOverMessage = function gameOverMessage() {
+    Game.message = $('<p class="gameover">GAME OVER!</p>');
+    Game.board.append(Game.message);
+    $('#high-score').text(`High Score: ${Game.score++ -1}`);
+  };
+
+  Game.resetButton = function resetButton() {
+    Game.resetButton = $('<p class="button">Play again<p>');
+    Game.board.append(Game.resetButton);
   };
 
   Game.startGame();

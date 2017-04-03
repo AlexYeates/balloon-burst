@@ -27,6 +27,22 @@
   color: #FFFF99;
 }
 
+.gameover {
+  text-align: center;
+  font-size: 80px;
+  margin: 40px;
+  font-family: 'Press Start 2P', cursive;
+  color: #FFFF99;
+}
+
+.button {
+  text-align: center;
+  font-size: 40px;
+  margin: 40px;
+  font-family: 'Press Start 2P', cursive;
+  color: #FFFF99;
+}
+
 #time {
   font-size: 20px;
   text-align: left;
