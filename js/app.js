@@ -18,9 +18,15 @@ $(() => {
     animation();
   }
 
+  if (slowBalloons === {top: 0, left: 0}) {
+    alert('true');
+  }
+
+
+
+
   //Maybe add the hour glass animation so the balloons will sway as they try to reach the top?
   function animation(){
-    // while (missedBalloons < 3) {
     slowBalloons.setAttribute('id', 'slow');
     const slow = {
       duration: 1000,
@@ -34,6 +40,10 @@ $(() => {
     $.extend(true, {}, slow, {
       complete: missedBalloons.push(slowBalloons)
     });
+
+
+
+
     mediumBalloons.setAttribute('id', 'medium');
     const medium = {
       duration: 800,
@@ -61,11 +71,20 @@ $(() => {
       complete: missedBalloons.push(fastBalloons)
     });
   }
-  //}
   console.log(missedBalloons);
 
-  //A timer for 30 seconds will end the game
 
+
+//another animation version?
+//slowballoons.bottom(300).promise().then(function(){ … });
+
+
+
+  // y index to push into the array when it reaches the top row (take away animation complete condition, and just leave the hover as it is?)
+
+  //A timer for 30 seconds will end the game.
+
+  //levels up to 10 getting harder as they go.
 });
 
 
