@@ -1,5 +1,3 @@
-// const balloonWidth  = 50;
-
 $(() => {
 
   var Game = Game || {};
@@ -30,9 +28,11 @@ $(() => {
       duration: 1500,
       step: Game.gameOverCheck,
       complete: function() {
-        // clearInterval(Game.interval);
         if (!($(this).hasClass('clicked'))) {
-          console.log('gameover');
+          Game.gameOverMessage = $('<p class="loser">GAME OVER!</p>');
+          Game.
+          Game.board.append(Game.gameOverMessage);
+          $('#high-score').text(`High Score: ${Game.score++ -1}`);
           Game.gameOver = true;
         }
       }
@@ -41,7 +41,9 @@ $(() => {
 
   Game.gameOverCheck = function() {
     if (Game.gameOver === true) {
-      console.log('GAAAAAME OVER YO');
+      // console.log('GAAAAAME OVER YO');
+      // Add Game Over Screen
+
       $(this).stop();
       $(this).remove();
     }
