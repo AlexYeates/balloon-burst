@@ -4,9 +4,10 @@ $(() => {
 
   Game.balloonHeight = 50;
   Game.score         = 1;
-  Game.gameOver      = false;
+  Game.highScore     = 0;
 
   Game.startGame = function() {
+    Game.gameOver = false;
     Game.interval = setInterval(Game.createBalloon, 500);
     $(document).on('mouseover', '.balloon', function() {
       $(this).remove();
@@ -50,16 +51,22 @@ $(() => {
   Game.gameOverMessage = function gameOverMessage() {
     Game.message = $('<p class="gameover">GAME OVER!</p>');
     Game.board.append(Game.message);
-    $('#high-score').text(`High Score: ${Game.score++ -1}`);
+    if (Game.highScore < Game.score) {
+      $('#high-score').text(`High Score: ${Game.score++ -1}`);
+      Game.highScore = Game.score;
+    }
   };
 
-// The click function wont trigger 
+  // The reset button wont reset score count and it won't reappear after the second gameover. It also makes it go super fast.
   Game.resetButton = function resetButton() {
     Game.resetButton = $('<p class="button">Play again</p>');
-    Game.board.append(Game.resetButton);
-    Game.resetButton.on('click', '.button', function() {
+    Game.resetButton.on('click', function() {
+      //Restart the count to 0
+      Game.message.empty();
+      Game.resetButton.empty();
       Game.startGame();
     });
+    Game.board.append(Game.resetButton);
   };
 
   Game.startGame();
