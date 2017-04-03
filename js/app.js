@@ -14,8 +14,7 @@ $(() => {
       $('#score').text(`Score: ${Game.score++}`);
     });
   };
-
-
+  
   Game.createBalloon = function createBalloon() {
     console.log(Game.balloon);
     Game.board    = $('.board');
@@ -25,15 +24,19 @@ $(() => {
     Game.balloon.animate({
       top: `-${Game.balloonHeight}px`
     }, {
-      duration: 1500,
+      duration: 2000,
       step: Game.gameOverCheck,
       complete: function() {
         if (!($(this).hasClass('clicked'))) {
-          Game.gameOverMessage = $('<p class="loser">GAME OVER!</p>');
-          Game.
-          Game.board.append(Game.gameOverMessage);
-          $('#high-score').text(`High Score: ${Game.score++ -1}`);
           Game.gameOver = true;
+          Game.gameOverMessage = $('<p>GAME OVER!</p>');
+          Game.gameOverMessage.css({
+            'text-align': 'left',
+            'font-size': '80px',
+            'margin': '40px'
+          });
+          $('').append(Game.gameOverMessage);
+          $('#high-score').text(`High Score: ${Game.score++ -1}`);
         }
       }
     });
@@ -41,9 +44,6 @@ $(() => {
 
   Game.gameOverCheck = function() {
     if (Game.gameOver === true) {
-      // console.log('GAAAAAME OVER YO');
-      // Add Game Over Screen
-
       $(this).stop();
       $(this).remove();
     }

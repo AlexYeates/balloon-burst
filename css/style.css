@@ -1,9 +1,12 @@
+.background {
+  width: 1440px;
+  background: url(http://i.imgur.com/jAXm1WJ.png);
+}
+
 .board {
   width: 1100px;
   height: 700px;
   float: right;
-  border: 1px solid black;
-  background-color: beige;
 }
 
 .sidebar {
