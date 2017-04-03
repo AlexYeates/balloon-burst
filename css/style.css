@@ -1,3 +1,10 @@
+.board {
+  width: 600px;
+  height: 800px;
+  border: 1px sold black;
+}
+
+
 .balloon {
   height: 50px;
   width: 50px;
