@@ -55,13 +55,14 @@ $(() => {
       $('#high-score').text(`High Score: ${Game.score++ -1}`);
       Game.highScore = Game.score;
     }
+    Game.score = 0;
   };
 
   // The reset button wont reset score count and it won't reappear after the second gameover. It also makes it go super fast.
   Game.resetButton = function resetButton() {
     Game.resetButton = $('<p class="button">Play again</p>');
     Game.resetButton.on('click', function() {
-      //Restart the count to 0
+      $('#score').text(`Score: `);
       Game.message.empty();
       Game.resetButton.empty();
       Game.startGame();
