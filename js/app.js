@@ -14,11 +14,11 @@ $(() => {
       $('#score').text(`Score: ${Game.score++}`);
     });
   };
-  
+
   Game.createBalloon = function createBalloon() {
     console.log(Game.balloon);
     Game.board    = $('.board');
-    Game.balloon  = $('<div class="balloon"></div>');
+    Game.balloon  = $('<div class="balloon"><img src=images/balloon.png></div>');
     Game.balloon.css('right', Game.randomStartingPosition());
     Game.board.append(Game.balloon);
     Game.balloon.animate({

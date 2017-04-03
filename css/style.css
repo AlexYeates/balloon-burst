@@ -15,36 +15,38 @@
 }
 
 .balloon {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  background: red;
-  border: 1px solid darkred;
   position: absolute;
   bottom: -50px;
-  box-sizing: border-box;
 }
 
 .logo {
   font-size: 70px;
   text-align: center;
   padding: 10px;
+  font-family: 'Press Start 2P', cursive;
+  color: #FFFF99;
 }
 
 #time {
-  font-size: 25px;
+  font-size: 20px;
   text-align: left;
   margin: 40px;
+  font-family: 'Press Start 2P', cursive;
+  color: #FFFF99;
 }
 
 #score {
-  font-size: 25px;
+  font-size: 20px;
   text-align: left;
   margin: 40px;
+  font-family: 'Press Start 2P', cursive;
+  color: #FFFF99;
 }
 
 #high-score {
-  font-size: 25px;
+  font-size: 20px;
   text-align: left;
   margin: 40px;
+  font-family: 'Press Start 2P', cursive;
+  color: #FFFF99;
 }
