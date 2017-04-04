@@ -8,9 +8,6 @@ $(() => {
 
   Game.startGame = function() {
     Game.gameOver = false;
-    //Mimicing gameOver logic for the reset button
-    Game.reset = false;
-    //
     Game.interval = setInterval(Game.createBalloon, 500);
     $(document).on('mouseover', '.balloon', function() {
       $(this).remove();
@@ -50,9 +47,6 @@ $(() => {
     }
   };
 
-  //mimicing the gameOverCheck for the rest. function:
-
-
   Game.gameOverMessage = function gameOverMessage() {
     Game.message = $('<p class="gameover">GAME OVER!</p>');
     Game.board.append(Game.message);
@@ -62,15 +56,15 @@ $(() => {
     }
   };
 
-  // The reset button makes it go too fast, counts up in 2s and wont reapper on the seconds go.
+  // The reset button makes it go too fast and counts up in 2s.
   Game.resetButton = function resetButton() {
-    Game.resetButton = $('<p class="button">Play again</p>');
-    Game.board.append(Game.resetButton);
-    Game.resetButton.on('click', function() {
+    Game.reset = $('<p class="button">Play again</p>');
+    Game.board.append(Game.reset);
+    Game.reset.on('click', function() {
       Game.score = 0;
       $('#score').text(`Score: `);
       Game.message.empty();
-      Game.resetButton.empty();
+      Game.reset.empty();
       Game.startGame();
     });
   };
