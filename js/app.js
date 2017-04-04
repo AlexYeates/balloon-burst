@@ -22,17 +22,8 @@ $(() => {
 
   Game.startGame = function() {
     Game.gameOver = false;
-    Game.interval = Game.levels();// setInterval(Game.createBalloon, 500); //need to swap the in the interval function
+    Game.interval = setInterval(Game.createBalloon, 500);
     $(document).on('mouseover', '.balloon', Game.balloonPop);
-  };
-
-  //This to do an if..else on how short the intervals are based on the score
-  Game.levels = function levels() {
-    if (Game.score % 10 === 0) {
-      setInterval(Game.createBalloon, 100);
-    } else {
-      setInterval(Game.createBalloon, 500);
-    }
   };
 
   Game.balloonPop = function() {
@@ -40,6 +31,8 @@ $(() => {
     $(this).addClass('clicked');
     Game.score++;
     $('#score').text(`Score: ${Game.score}`);
+    Game.audio = $('audio');
+    Game.audio.play();
   };
 
   Game.createBalloon = function createBalloon() {
