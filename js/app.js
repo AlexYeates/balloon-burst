@@ -3,10 +3,8 @@ $(() => {
   var Game = Game || {};
 
   Game.balloonHeight = 50;
-  // Game.score         = 1;
   Game.highScore     = 0;
 
-  // The reset button makes it go too fast and counts up in 2s -> these issues are probably related to the game running twice within itself. On each reset it runs again.
   Game.startScreen = function startScreen() {
     Game.board       = $('.board');
     Game.startText   = $('<p class="starttext">Welcome to Pop Game. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
@@ -29,7 +27,6 @@ $(() => {
   };
 
   Game.balloonPop = function() {
-    console.log('clicked');
     $(this).remove();
     $(this).addClass('clicked');
     Game.score++;
@@ -37,7 +34,6 @@ $(() => {
   };
 
   Game.createBalloon = function createBalloon() {
-    // Game.board    = $('.board');
     Game.balloon  = $('<div class="balloon"><img src=images/balloon.png></div>');
     Game.balloon.css('right', Game.randomStartingPosition());
     Game.board.append(Game.balloon);
@@ -92,6 +88,5 @@ $(() => {
   };
 
   Game.startScreen();
-
 
 });
