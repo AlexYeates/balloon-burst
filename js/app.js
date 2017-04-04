@@ -9,14 +9,14 @@ $(() => {
   // The reset button makes it go too fast and counts up in 2s -> these issues are probably related to the game running twice within itself. On each reset it runs again.
   Game.startScreen = function startScreen() {
     Game.board       = $('.board');
-    Game.startText   = $('<p class="starttext">Welcome to Pop Game. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\s game over!</p>');
+    Game.startText   = $('<p class="starttext">Welcome to Pop Game. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
     Game.startButton = $('<p class="startbutton">Start!</p>');
     Game.board.append(Game.startText);
     Game.board.append(Game.startButton);
     Game.startButton.on('click', function() {
       Game.startText.empty();
       Game.startButton.empty();
-      Game.score = 1;
+      Game.score = 0;
       $('#score').text(`Score: `);
       Game.startGame();
     });
@@ -25,11 +25,15 @@ $(() => {
   Game.startGame = function() {
     Game.gameOver = false;
     Game.interval = setInterval(Game.createBalloon, 500);
-    $(document).on('mouseover', '.balloon', function() {
-      $(this).remove();
-      $(this).addClass('clicked');
-      $('#score').text(`Score: ${Game.score++}`);
-    });
+    $(document).on('mouseover', '.balloon', Game.balloonPop);
+  };
+
+  Game.balloonPop = function() {
+    console.log('clicked');
+    $(this).remove();
+    $(this).addClass('clicked');
+    Game.score++;
+    $('#score').text(`Score: ${Game.score}`);
   };
 
   Game.createBalloon = function createBalloon() {
@@ -60,6 +64,9 @@ $(() => {
     if (Game.gameOver === true) {
       $(this).stop();
       $(this).remove();
+      clearInterval(Game.interval);
+      Game.score = 0;
+      $(document).off('mouseover', '.balloon', Game.balloonPop);
     }
   };
 
@@ -67,7 +74,7 @@ $(() => {
     Game.messageText = $('<p class="gameover">GAME OVER!</p>');
     Game.board.append(Game.messageText);
     if (Game.highScore < Game.score) {
-      $('#high-score').text(`High Score: ${Game.score++ -1}`);
+      $('#high-score').text(`High Score: ${Game.score}`);
       Game.highScore = Game.score;
     }
   };
