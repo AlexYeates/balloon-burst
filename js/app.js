@@ -6,6 +6,16 @@ $(() => {
   Game.score         = 1;
   Game.highScore     = 0;
 
+  //start button to fix the game running over itself?
+  //create text and with button and append it to board
+  //make a button within that text
+  //add on click to the button
+  //the onclick will clear the start button and call startGame
+
+  Game.startButton = function startButton() {
+
+  };
+
   Game.startGame = function() {
     Game.gameOver = false;
     Game.interval = setInterval(Game.createBalloon, 500);
@@ -13,6 +23,7 @@ $(() => {
       $(this).remove();
       $(this).addClass('clicked');
       $('#score').text(`Score: ${Game.score++}`);
+      console.log('running');
     });
   };
 
@@ -56,7 +67,7 @@ $(() => {
     }
   };
 
-  // The reset button makes it go too fast and counts up in 2s.
+  // The reset button makes it go too fast and counts up in 2s -> these issues are probably related to the game running twice within itself. On each reset it runs again.
   Game.resetButton = function resetButton() {
     Game.resetText = $('<p class="button">Play again</p>');
     Game.board.append(Game.resetText);
@@ -65,10 +76,14 @@ $(() => {
       $('#score').text(`Score: `);
       Game.messageText.empty();
       Game.resetText.empty();
-      Game.startGame();
+      // Game.startGame();
+      Game.startButton();
     });
   };
 
-  Game.startGame();
+  // Game.startGame();
+  // in leiu of startgame here, have start button
+  Game.startButton();
+
 
 });

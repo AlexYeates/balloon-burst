@@ -1,6 +1,6 @@
 .background {
   width: 1440px;
-  background: url(http://i.imgur.com/jAXm1WJ.png);
+  background: url('../images/background.png');
 }
 
 .board {
