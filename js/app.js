@@ -48,8 +48,8 @@ $(() => {
   };
 
   Game.gameOverMessage = function gameOverMessage() {
-    Game.message = $('<p class="gameover">GAME OVER!</p>');
-    Game.board.append(Game.message);
+    Game.messageText = $('<p class="gameover">GAME OVER!</p>');
+    Game.board.append(Game.messageText);
     if (Game.highScore < Game.score) {
       $('#high-score').text(`High Score: ${Game.score++ -1}`);
       Game.highScore = Game.score;
@@ -58,13 +58,13 @@ $(() => {
 
   // The reset button makes it go too fast and counts up in 2s.
   Game.resetButton = function resetButton() {
-    Game.reset = $('<p class="button">Play again</p>');
-    Game.board.append(Game.reset);
-    Game.reset.on('click', function() {
+    Game.resetText = $('<p class="button">Play again</p>');
+    Game.board.append(Game.resetText);
+    Game.resetText.on('click', function() {
       Game.score = 0;
       $('#score').text(`Score: `);
-      Game.message.empty();
-      Game.reset.empty();
+      Game.messageText.empty();
+      Game.resetText.empty();
       Game.startGame();
     });
   };
