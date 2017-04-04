@@ -20,7 +20,7 @@
 }
 
 .logo {
-  font-size: 70px;
+  font-size: 40px;
   text-align: center;
   padding: 10px;
   font-family: 'Press Start 2P', cursive;
@@ -41,6 +41,14 @@
   margin: 40px;
   font-family: 'Press Start 2P', cursive;
   color: #FFFF99;
+}
+
+.startbutton:hover {
+  color: #F9F900;
+}
+
+.reset-button:hover {
+  color: #F9F900;
 }
 
 .gameover {

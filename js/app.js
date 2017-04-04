@@ -2,12 +2,12 @@ $(() => {
 
   var Game = Game || {};
 
-  Game.balloonHeight = 50;
+  Game.balloonHeight = 100;
   Game.highScore     = 0;
 
   Game.startScreen = function startScreen() {
     Game.board       = $('.board');
-    Game.startText   = $('<p class="starttext">Welcome to Pop Game. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
+    Game.startText   = $('<p class="starttext">Welcome to Balloon Burst. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
     Game.startButton = $('<p class="startbutton">Start!</p>');
     Game.board.append(Game.startText);
     Game.board.append(Game.startButton);
@@ -29,8 +29,7 @@ $(() => {
   Game.balloonPop = function() {
     $(this).remove();
     $(this).addClass('clicked');
-    new Audio('sounds/shotty.wav').play();
-
+    new Audio('sounds/pop.wav').play();
     Game.score++;
     $('#score').text(`Score: ${Game.score}`);
   };
