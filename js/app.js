@@ -29,10 +29,10 @@ $(() => {
   Game.balloonPop = function() {
     $(this).remove();
     $(this).addClass('clicked');
+    new Audio('sounds/shotty.wav').play();
+
     Game.score++;
     $('#score').text(`Score: ${Game.score}`);
-    Game.audio = $('audio');
-    Game.audio.play();
   };
 
   Game.createBalloon = function createBalloon() {
