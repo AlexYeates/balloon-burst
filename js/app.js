@@ -3,17 +3,23 @@ $(() => {
   var Game = Game || {};
 
   Game.balloonHeight = 50;
-  Game.score         = 1;
+  // Game.score         = 1;
   Game.highScore     = 0;
 
-  //start button to fix the game running over itself?
-  //create text and with button and append it to board
-  //make a button within that text
-  //add on click to the button
-  //the onclick will clear the start button and call startGame
-
-  Game.startButton = function startButton() {
-
+  // The reset button makes it go too fast and counts up in 2s -> these issues are probably related to the game running twice within itself. On each reset it runs again.
+  Game.startScreen = function startScreen() {
+    Game.board       = $('.board');
+    Game.startText   = $('<p class="starttext">Welcome to Pop Game. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\s game over!</p>');
+    Game.startButton = $('<p class="startbutton">Start!</p>');
+    Game.board.append(Game.startText);
+    Game.board.append(Game.startButton);
+    Game.startButton.on('click', function() {
+      Game.startText.empty();
+      Game.startButton.empty();
+      Game.score = 1;
+      $('#score').text(`Score: `);
+      Game.startGame();
+    });
   };
 
   Game.startGame = function() {
@@ -23,12 +29,11 @@ $(() => {
       $(this).remove();
       $(this).addClass('clicked');
       $('#score').text(`Score: ${Game.score++}`);
-      console.log('running');
     });
   };
 
   Game.createBalloon = function createBalloon() {
-    Game.board    = $('.board');
+    // Game.board    = $('.board');
     Game.balloon  = $('<div class="balloon"><img src=images/balloon.png></div>');
     Game.balloon.css('right', Game.randomStartingPosition());
     Game.board.append(Game.balloon);
@@ -67,23 +72,19 @@ $(() => {
     }
   };
 
-  // The reset button makes it go too fast and counts up in 2s -> these issues are probably related to the game running twice within itself. On each reset it runs again.
   Game.resetButton = function resetButton() {
-    Game.resetText = $('<p class="button">Play again</p>');
+    Game.resetText = $('<p class="reset-button">Play again</p>');
     Game.board.append(Game.resetText);
     Game.resetText.on('click', function() {
-      Game.score = 0;
-      $('#score').text(`Score: `);
       Game.messageText.empty();
       Game.resetText.empty();
-      // Game.startGame();
-      Game.startButton();
+      Game.startText.empty();
+      Game.startButton.empty();
+      Game.startScreen();
     });
   };
 
-  // Game.startGame();
-  // in leiu of startgame here, have start button
-  Game.startButton();
+  Game.startScreen();
 
 
 });

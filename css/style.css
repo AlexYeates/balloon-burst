@@ -27,6 +27,22 @@
   color: #FFFF99;
 }
 
+.starttext {
+  text-align: center;
+  font-size: 40;
+  margin: 40px;
+  font-family: 'Press Start 2P', cursive;
+  color: #FFFF99;
+}
+
+.startbutton {
+  text-align: center;
+  font-size: 40px;
+  margin: 40px;
+  font-family: 'Press Start 2P', cursive;
+  color: #FFFF99;
+}
+
 .gameover {
   text-align: center;
   font-size: 80px;
@@ -35,7 +51,7 @@
   color: #FFFF99;
 }
 
-.button {
+.reset-button {
   text-align: center;
   font-size: 40px;
   margin: 40px;
