@@ -64,7 +64,12 @@ $(() => {
   Game.levels = function levels() {
     if (Game.score % 25 === 0) {
       Game.difficulty = Game.difficulty - 100;
+      //call second balloon which is the blunder
     }
+  };
+
+  Game.blunderBalloon = function blunderBalloon() {
+
   };
 
   Game.gameOverCheck = function() {
