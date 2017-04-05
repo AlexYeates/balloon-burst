@@ -32,6 +32,7 @@ $(() => {
     new Audio('sounds/pop.wav').play();
     Game.score++;
     $('#score').text(`Score: ${Game.score}`);
+    Game.levels();
   };
 
   Game.createBalloon = function createBalloon() {
@@ -61,7 +62,7 @@ $(() => {
 
   Game.levels = function levels() {
     if (Game.score % 25 === 0) {
-      Game.difficulty = Game.difficulty - 900;
+      Game.difficulty = Game.difficulty - 100;
     }
   };
 
