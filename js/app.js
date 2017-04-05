@@ -2,12 +2,12 @@ $(() => {
 
   var Game = Game || {};
 
-  Game.balloonHeight = 100;
-  Game.highScore     = 0;
+  Game.highScore = 0;
+  Game.difficulty = 1000;
 
   Game.startScreen = function startScreen() {
-    Game.board       = $('.board');
-    Game.startText   = $('<p class="starttext">Welcome to Balloon Burst. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
+    Game.board     = $('.board');
+    Game.startText = $('<p class="starttext">Welcome to Balloon Burst. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
     Game.startButton = $('<p class="startbutton">Start!</p>');
     Game.board.append(Game.startText);
     Game.board.append(Game.startButton);
@@ -22,7 +22,7 @@ $(() => {
 
   Game.startGame = function() {
     Game.gameOver = false;
-    Game.interval = setInterval(Game.createBalloon, 500);
+    Game.timeOut  = setTimeout(Game.createBalloon, Game.difficulty);
     $(document).on('mouseover', '.balloon', Game.balloonPop);
   };
 
@@ -35,7 +35,9 @@ $(() => {
   };
 
   Game.createBalloon = function createBalloon() {
-    Game.balloon  = $('<div class="balloon"><img src=images/balloon.png></div>');
+    Game.timeOut = setTimeout(Game.createBalloon, Game.difficulty);
+    Game.balloonHeight = 100;
+    Game.balloon       = $('<div class="balloon"><img src=images/balloon.png></div>');
     Game.balloon.css('right', Game.randomStartingPosition());
     Game.board.append(Game.balloon);
     Game.balloon.animate({
@@ -57,12 +59,18 @@ $(() => {
     return Math.floor(Math.random() * 1000);
   };
 
+  Game.levels = function levels() {
+    if (Game.score % 25 === 0) {
+      Game.difficulty = Game.difficulty - 900;
+    }
+  };
+
   Game.gameOverCheck = function() {
     if (Game.gameOver === true) {
       $(this).stop();
       $(this).remove();
-      clearInterval(Game.interval);
       Game.score = 0;
+      clearInterval(Game.timeOut);
       $(document).off('mouseover', '.balloon', Game.balloonPop);
     }
   };
@@ -84,6 +92,7 @@ $(() => {
       Game.resetText.empty();
       Game.startText.empty();
       Game.startButton.empty();
+      Game.difficulty = 1000;
       Game.startScreen();
     });
   };
