@@ -38,11 +38,12 @@ $(() => {
   Game.createBalloon = function createBalloon() {
     Game.timeOut = setTimeout(Game.createBalloon, Game.difficulty);
     Game.balloonHeight = 100;
-    Game.balloon       = $('<div class="balloon"><img src=images/balloon.png></div>');
+    Game.balloon       = $('<div class="balloon animated swing"><img src=images/balloon.png></div>');
     Game.balloon.css('right', Game.randomStartingPosition());
     Game.board.append(Game.balloon);
     Game.balloon.animate({
-      top: `-${Game.balloonHeight}px`
+      top: `-${Game.balloonHeight}px`,
+      easing: 'linear'
     }, {
       duration: 2000,
       step: Game.gameOverCheck,
