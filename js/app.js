@@ -65,8 +65,8 @@ Game.randomStartingPosition = function randomStartingPosition() {
 };
 
 Game.levels = function levels() {
-  if (Game.score % 25 === 0) {
-    Game.difficulty = Game.difficulty - 50;
+  if (Game.score % 5 === 0) {
+    Game.difficulty = Game.difficulty - 900;
   }
 };
 
@@ -90,16 +90,18 @@ Game.gameOverMessage = function gameOverMessage() {
 };
 
 Game.resetButton = function resetButton() {
-  this.resetText   = $('<p class="reset-button">Play again</p>');
-  this.board.append(this.resetText);
-  Game.resetText.on('click', function() {
-    Game.messageText.empty();
-    Game.resetText.empty();
-    Game.startText.empty();
-    Game.startButton.empty();
-    Game.difficulty = 1000;
-    Game.startScreen();
-  });
+  this.resetButton   = $('<p class="reset-button">Play again</p>');
+  this.board.append(this.resetButton);
+  this.resetButton.on('click', this.resetButtonAction.bind(this));
+};
+
+Game.resetButtonAction = function() {
+  this.messageText.empty();
+  this.resetButton.empty();
+  this.startText.empty();
+  this.startButton.empty();
+  this.difficulty = 1000;
+  this.startScreen();
 };
 
 $(Game.init.bind(Game));
