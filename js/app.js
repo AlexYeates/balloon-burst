@@ -1,55 +1,68 @@
 var Game = Game || {};
 
-Game.highScore = 0;
-Game.difficulty = 1000;
+Game.init = function init() {
+
+  this.highScore       = 0;
+
+
+  this.board           = $('.board');
+  this.startText       = $('<p class="starttext">Welcome to Balloon Burst. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
+  this.startButtonText = $('<p class="startbutton">Start!</p>');
+  this.balloon         = $('<div class="balloon animated swing"><img src=images/balloon.png></div>');
+  this.messageText     = $('<p class="gameover">GAME OVER!</p>');
+  this.resetText       = $('<p class="reset-button">Play again</p>');
+
+  this.startButtonText.on('click', this.startButton.bind(this));
+  $(document).on('mouseover', '.balloon', this.balloonPop.bind(this));
+  this.resetText.on('click', this.resetButton.bind(this));
+
+  this.startScreen();
+};
 
 Game.startScreen = function startScreen() {
-  Game.board     = $('.board');
-  Game.startText = $('<p class="starttext">Welcome to Balloon Burst. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
-  Game.startButton = $('<p class="startbutton">Start!</p>');
-  Game.board.append(Game.startText);
-  Game.board.append(Game.startButton);
-  Game.startButton.on('click', function() {
-    Game.startText.empty();
-    Game.startButton.empty();
-    Game.score = 0;
-    $('#score').text(`Score: `);
-    Game.startGame();
-  });
+  this.difficulty = 1000;
+  this.board.append(this.startText);
+  this.board.append(this.startButtonText);
+};
+
+Game.startButton = function() {
+  this.startText.empty();
+  this.startButtonText.empty();
+  this.score = 0;
+  $('#score').text(`Score: `);
+  this.startGame();
 };
 
 Game.startGame = function() {
-  Game.gameOver = false;
-  Game.timeOut  = setTimeout(Game.createBalloon, Game.difficulty);
-  $(document).on('mouseover', '.balloon', Game.balloonPop);
+  this.gameOver = false;
+  this.timeOut  = setTimeout(this.createBalloon, this.difficulty);
 };
 
 Game.balloonPop = function() {
   $(this).remove();
   $(this).addClass('clicked');
   new Audio('sounds/pop.wav').play();
-  Game.score++;
-  $('#score').text(`Score: ${Game.score}`);
-  Game.levels();
+  this.score++;
+  $('#score').text(`Score: ${this.score}`);
+  this.levels();
 };
 
 Game.createBalloon = function createBalloon() {
-  Game.timeOut = setTimeout(Game.createBalloon, Game.difficulty);
-  Game.balloonHeight = 100;
-  Game.balloon       = $('<div class="balloon animated swing"><img src=images/balloon.png></div>');
-  Game.balloon.css('right', Game.randomStartingPosition());
-  Game.board.append(Game.balloon);
-  Game.balloon.animate({
-    top: `-${Game.balloonHeight}px`,
+  this.balloonHeight   = 100;
+  this.timeOut = setTimeout(Game.createBalloon, Game.difficulty);
+  this.balloon.css('right', this.randomStartingPosition());
+  this.board.append(this.balloon);
+  this.balloon.animate({
+    top: `-${this.balloonHeight}px`,
     easing: 'linear'
   }, {
     duration: 2000,
-    step: Game.gameOverCheck,
+    step: this.gameOverCheck,
     complete: function() {
       if (!($(this).hasClass('clicked'))) {
-        Game.gameOver = true;
-        Game.gameOverMessage();
-        Game.resetButton();
+        this.gameOver = true;
+        this.gameOverMessage();
+        this.reset();
       }
     }
   });
@@ -60,41 +73,40 @@ Game.randomStartingPosition = function randomStartingPosition() {
 };
 
 Game.levels = function levels() {
-  if (Game.score % 25 === 0) {
-    Game.difficulty = Game.difficulty - 100;
+  if (this.score % 25 === 0) {
+    this.difficulty = this.difficulty - 100;
   }
 };
 
 Game.gameOverCheck = function() {
-  if (Game.gameOver === true) {
+  if (this.gameOver === true) {
     $(this).stop();
     $(this).remove();
-    Game.score = 0;
-    clearInterval(Game.timeOut);
-    $(document).off('mouseover', '.balloon', Game.balloonPop);
+    this.score = 0;
+    clearInterval(this.timeOut);
+    $(document).off('mouseover', '.balloon', this.balloonPop);
   }
 };
 
 Game.gameOverMessage = function gameOverMessage() {
-  Game.messageText = $('<p class="gameover">GAME OVER!</p>');
-  Game.board.append(Game.messageText);
-  if (Game.highScore < Game.score) {
-    $('#high-score').text(`High Score: ${Game.score}`);
-    Game.highScore = Game.score;
+  this.board.append(this.messageText);
+  if (this.highScore < this.score) {
+    $('#high-score').text(`High Score: ${this.score}`);
+    this.highScore = this.score;
   }
 };
 
-Game.resetButton = function resetButton() {
-  Game.resetText = $('<p class="reset-button">Play again</p>');
-  Game.board.append(Game.resetText);
-  Game.resetText.on('click', function() {
-    Game.messageText.empty();
-    Game.resetText.empty();
-    Game.startText.empty();
-    Game.startButton.empty();
-    Game.difficulty = 1000;
-    Game.startScreen();
-  });
+Game.reset = function reset() {
+  this.board.append(this.resetText);
 };
 
-$(Game.startScreen.bind(Game));
+Game.resetButton = function() {
+  this.messageText.empty();
+  this.resetText.empty();
+  this.startText.empty();
+  this.startButton.empty();
+  this.difficulty = 1000;
+  this.startScreen();
+};
+
+$(Game.init.bind(Game));
