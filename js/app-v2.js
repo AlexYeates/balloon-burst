@@ -1,17 +1,14 @@
 var Game = Game || {};
 
-Game.init = function init() {
-  this.highScore   = 0;
-  this.difficulty  = 1000;
-  this.startScreen();
-};
+Game.highScore = 0;
+Game.difficulty = 1000;
 
 Game.startScreen = function startScreen() {
-  this.board       = $('.board');
-  this.startText   = $('<p class="starttext">Welcome to Balloon Burst. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
-  this.startButton = $('<p class="startbutton">Start!</p>');
-  this.board.append(Game.startText);
-  this.board.append(Game.startButton);
+  Game.board     = $('.board');
+  Game.startText = $('<p class="starttext">Welcome to Balloon Burst. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
+  Game.startButton = $('<p class="startbutton">Start!</p>');
+  Game.board.append(Game.startText);
+  Game.board.append(Game.startButton);
   Game.startButton.on('click', function() {
     Game.startText.empty();
     Game.startButton.empty();
@@ -37,7 +34,7 @@ Game.balloonPop = function() {
 };
 
 Game.createBalloon = function createBalloon() {
-  Game.timeOut       = setTimeout(Game.createBalloon, Game.difficulty);
+  Game.timeOut = setTimeout(Game.createBalloon, Game.difficulty);
   Game.balloonHeight = 100;
   Game.balloon       = $('<div class="balloon animated swing"><img src=images/balloon.png></div>');
   Game.balloon.css('right', Game.randomStartingPosition());
@@ -88,7 +85,7 @@ Game.gameOverMessage = function gameOverMessage() {
 };
 
 Game.resetButton = function resetButton() {
-  Game.resetText   = $('<p class="reset-button">Play again</p>');
+  Game.resetText = $('<p class="reset-button">Play again</p>');
   Game.board.append(Game.resetText);
   Game.resetText.on('click', function() {
     Game.messageText.empty();
@@ -100,4 +97,4 @@ Game.resetButton = function resetButton() {
   });
 };
 
-$(Game.init.bind(Game));
+$(Game.startScreen.bind(Game));

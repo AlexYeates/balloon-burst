@@ -4,15 +4,17 @@
 
 <h2>Introduction</h2>
 
-This is my first project for the Web Development Immersive course at General Assembly in London. Balloon Burst started out with inspiration from the popular phone game Fruit Ninja. As the game was planned and developed, it was tweaked to have balloons rather than fruit, and for the balloons to travel to the top of the board rather than fall back again after a certian distance. 
+This is my <strong>first project</strong> for the <strong>Web Development Immersive</strong> course at <strong>General Assembly</strong> in London. <strong>Balloon Burst</strong> started out with inspiration from the popular phone game Fruit Ninja. 
 
-You can see a working version of the game <a href="https://serene-river-15658.herokuapp.com/">here</a>.
+As the game was planned and developed, it was tweaked to have balloons rather than fruit, and for the balloons to travel to the top of the board rather than fall back again after a certian distance. 
 
-You can see the code for the game <a href="https://github.com/AlexYeates/wdi-project-1">here</a>.
+You can see a <strong>working version</strong> of the game <a href="https://serene-river-15658.herokuapp.com/">here</a>.
 
-<h2>How to play</h2>
+You can see the <strong>code</strong> for the game <a href="https://github.com/AlexYeates/wdi-project-1">here</a>.
 
-The aim of the game is to pop the balloons as they appear with your cursor before they reach the top of the screen. 
+<h2>How To Play</h2>
+
+The aim of the game is to <strong>pop</strong> the balloons as they appear with your cursor before they reach the top of the screen. 
 
 The balloons initially spawn at an interval of one second, which decreases every time you collect 25 points. Each balloon is worth one point. 
 
@@ -24,11 +26,16 @@ If you let one balloon reach the top then the game is over and your high score i
 - The game should either support two players or beat the computer.
 - To build the game in object orientated programming if possible.
 
-<h2>How it was built</h2>
+<h2>How It Was Built</h2>
 
 - <a href="https://jquery.com/">JQuery</a> 
 - <a href="https://daneden.github.io/animate.css/">Animate.css</a> 
 - <a href="http://cssreset.com/scripts/eric-meyer-reset-css/">CSS Reset</a> 
+
+<h2>Future Improvements</h2>
+
+- Add a drop down theme replacer.
+- Make a bluner balloon appear every 25 points that if you pop, you lose.
 
 <h2>Credits</h2>
 
