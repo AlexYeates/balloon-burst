@@ -12,13 +12,15 @@ Game.startScreen = function startScreen() {
   this.startButton = $('<p class="startbutton">Start!</p>');
   this.board.append(this.startText);
   this.board.append(this.startButton);
-  Game.startButton.on('click', function() {
-    Game.startText.empty();
-    Game.startButton.empty();
-    Game.score = 0;
-    $('#score').text(`Score: `);
-    Game.startGame();
-  });
+  this.startButton.on('click', this.startButtonAction.bind(this));
+};
+
+Game.startButtonAction = function() {
+  this.startText.empty();
+  this.startButton.empty();
+  this.score = 0;
+  $('#score').text(`Score: `);
+  this.startGame();
 };
 
 Game.startGame = function() {
@@ -63,8 +65,8 @@ Game.randomStartingPosition = function randomStartingPosition() {
 };
 
 Game.levels = function levels() {
-  if (Game.score % 5 === 0) {
-    Game.difficulty = Game.difficulty - 900;
+  if (Game.score % 25 === 0) {
+    Game.difficulty = Game.difficulty - 100;
   }
 };
 
