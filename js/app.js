@@ -10,8 +10,8 @@ Game.startScreen = function startScreen() {
   this.board       = $('.board');
   this.startText   = $('<p class="starttext">Welcome to Balloon Burst. The aim of the game is to pop all of the balloons before they fly away. Miss one balloon and it\'s game over!</p>');
   this.startButton = $('<p class="startbutton">Start!</p>');
-  this.board.append(Game.startText);
-  this.board.append(Game.startButton);
+  this.board.append(this.startText);
+  this.board.append(this.startButton);
   Game.startButton.on('click', function() {
     Game.startText.empty();
     Game.startButton.empty();
@@ -22,8 +22,8 @@ Game.startScreen = function startScreen() {
 };
 
 Game.startGame = function() {
-  Game.gameOver = false;
-  Game.timeOut  = setTimeout(Game.createBalloon, Game.difficulty);
+  this.gameOver = false;
+  this.timeOut  = setTimeout(Game.createBalloon, this.difficulty);
   $(document).on('mouseover', '.balloon', Game.balloonPop);
 };
 
@@ -63,8 +63,8 @@ Game.randomStartingPosition = function randomStartingPosition() {
 };
 
 Game.levels = function levels() {
-  if (Game.score % 25 === 0) {
-    Game.difficulty = Game.difficulty - 100;
+  if (Game.score % 5 === 0) {
+    Game.difficulty = Game.difficulty - 900;
   }
 };
 
@@ -79,8 +79,8 @@ Game.gameOverCheck = function() {
 };
 
 Game.gameOverMessage = function gameOverMessage() {
-  Game.messageText = $('<p class="gameover">GAME OVER!</p>');
-  Game.board.append(Game.messageText);
+  this.messageText = $('<p class="gameover">GAME OVER!</p>');
+  this.board.append(this.messageText);
   if (Game.highScore < Game.score) {
     $('#high-score').text(`High Score: ${Game.score}`);
     Game.highScore = Game.score;
@@ -88,8 +88,8 @@ Game.gameOverMessage = function gameOverMessage() {
 };
 
 Game.resetButton = function resetButton() {
-  Game.resetText   = $('<p class="reset-button">Play again</p>');
-  Game.board.append(Game.resetText);
+  this.resetText   = $('<p class="reset-button">Play again</p>');
+  this.board.append(this.resetText);
   Game.resetText.on('click', function() {
     Game.messageText.empty();
     Game.resetText.empty();
