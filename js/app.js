@@ -66,7 +66,7 @@ Game.randomStartingPosition = function randomStartingPosition() {
 
 Game.levels = function levels() {
   if (Game.score % 25 === 0) {
-    Game.difficulty = Game.difficulty - 100;
+    Game.difficulty = Game.difficulty - 50;
   }
 };
 
