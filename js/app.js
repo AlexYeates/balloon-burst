@@ -1,3 +1,4 @@
+// 
 var Game = Game || {};
 
 Game.init = function init() {
